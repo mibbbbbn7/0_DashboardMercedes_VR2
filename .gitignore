@@ -1,0 +1,15 @@
+*
+!*/
+
+# track this file
+
+!/.gitignore
+!/.gitattributes
+!/README.md
+!/LICENSE
+
+# whitelist everything in
+
+!/[Aa]ssets/**
+!/[Pp]roject[Ss]ettings/**
+!/[Pp]ackages/**
