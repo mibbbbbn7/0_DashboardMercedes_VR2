@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using UnityEngine;
 
-public interface IInitializationController : IController
+public interface IDashboardInitializationController : IController
 {
     public void InitializeFeature();
 

@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using DashboardMercedes;
 using UnityEngine;
 
-public class MainMenuFeature : BaseFeature, IMainMenuFeature, IMainMenuFeatureInternal, IInitializationController
+public class MainMenuFeature : BaseFeature, IMainMenuFeature, IMainMenuFeatureInternal, IDashboardInitializationController
 {
     private MainMenuFeatureData _featureData;
 

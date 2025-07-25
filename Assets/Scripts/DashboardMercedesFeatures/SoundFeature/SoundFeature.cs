@@ -10,7 +10,7 @@ public enum Channel
     SFX
 }
 
-public class SoundFeature : BaseFeature, ISoundFeature, ISoundFeatureInternal, IInitializationController
+public class SoundFeature : BaseFeature, ISoundFeature, ISoundFeatureInternal, IDashboardInitializationController
 {
     SoundFeatureData _featureData;
 

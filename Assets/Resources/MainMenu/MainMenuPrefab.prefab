@@ -2539,7 +2539,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 673.5198, y: 187.66797}
-  m_SizeDelta: {x: -1538.3855, y: -790}
+  m_SizeDelta: {x: -1538.3855, y: -790.5404}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7085413043308157202
 MonoBehaviour:
@@ -2702,7 +2702,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 328.03137, y: -105}
+  m_AnchoredPosition: {x: 327.07117, y: -105}
   m_SizeDelta: {x: 107.1663, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8966394941248550788
@@ -2782,7 +2782,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -4094,7 +4094,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 338.01355, y: -185}
+  m_AnchoredPosition: {x: 337.0533, y: -185}
   m_SizeDelta: {x: 87.202, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1780161143137889042
@@ -4174,7 +4174,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -5334,7 +5334,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 356.48035, y: -25}
+  m_AnchoredPosition: {x: 355.52014, y: -25}
   m_SizeDelta: {x: 50.2683, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4785684732534070612
@@ -5414,7 +5414,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -8041,7 +8041,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 356.4805, y: -265}
+  m_AnchoredPosition: {x: 355.5203, y: -265}
   m_SizeDelta: {x: 50.268, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5694845436037767136
@@ -8121,7 +8121,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1

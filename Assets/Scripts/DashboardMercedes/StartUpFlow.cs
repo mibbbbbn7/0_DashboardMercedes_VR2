@@ -12,26 +12,23 @@ namespace DashboardMercedes
 
         private async Task StartUpFlowTask(Client client)
         {
-            //ICameraFeature cameraFeature = client.Features.Get<ICameraFeature>();
-            //IPlayerFeature playerFeature = client.Features.Get<IPlayerFeature>();
-            //ILevelFeature levelFeature = client.Features.Get<ILevelFeature>();
-            //INPCFeature npcFeature = client.Features.Get<INPCFeature>();
             ISoundFeature soundFeature = client.Features.Get<ISoundFeature>();
             IMainMenuFeature menuFeature = client.Features.Get<IMainMenuFeature>();
             ITurnOnCarFeature turnOnCar = client.Features.Get<ITurnOnCarFeature>();
-            IInitializationController initController = client.Controllers.Get<IInitializationController>();
+            IDashboardInitializationController dashboardInitController = client.Controllers.Get<IDashboardInitializationController>();
+            ITurnOnCarInitializationController turnOnCarInitController = client.Controllers.Get<ITurnOnCarInitializationController>();
 
 
-            initController.InitializeFeature();
-            await initController.LoadFeature();
-            initController.OnFeatureLoadedAndInitialized();
+            //dashboardInitController.InitializeFeature();
+            //await dashboardInitController.LoadFeature();
+            //dashboardInitController.OnFeatureLoadedAndInitialized();
 
-            //await turnOnCar.InstantiateTurnOnCar();
-            await menuFeature.InstantiateMainMenu();
+            turnOnCarInitController.InitializeFeature();
+            await turnOnCarInitController.LoadFeature();
+            turnOnCarInitController.OnFeatureLoadedAndInitialized();
 
-            //await levelFeature.InstantiateLevel();
-            //await playerFeature.InstantiatePlayer();
-            //await npcFeature.InstantiateNPC(1);
+            await turnOnCar.InstantiateTurnOnCar();
+            //await menuFeature.InstantiateMainMenu();
         }
     }
 }

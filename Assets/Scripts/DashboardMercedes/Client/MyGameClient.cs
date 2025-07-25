@@ -11,7 +11,8 @@ namespace DashboardMercedes
 
         public override void InitControllers()
         {
-            Controllers.Add<IInitializationController>(new InitializationController(this));
+            Controllers.Add<IDashboardInitializationController>(new DashboardInitializationController(this));
+            Controllers.Add<ITurnOnCarInitializationController>(new TurnOnCarInitializationController(this));
         }
 
         public override void StartClient()

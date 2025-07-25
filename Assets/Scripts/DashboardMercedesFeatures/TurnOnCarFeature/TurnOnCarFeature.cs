@@ -2,7 +2,7 @@
 using DashboardMercedes;
 
 
-public class TurnOnCarFeature : BaseFeature, ITurnOnCarFeature, ITurnOnCarFeatureInternal, IInitializationController
+public class TurnOnCarFeature : BaseFeature, ITurnOnCarFeature, ITurnOnCarFeatureInternal, ITurnOnCarInitializationController
 {
     private TurnOnCarData _featureData;
 

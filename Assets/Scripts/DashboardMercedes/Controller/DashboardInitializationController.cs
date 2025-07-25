@@ -2,17 +2,17 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using DashboardMercedes;
 
-public class InitializationController : IInitializationController
+public class DashboardInitializationController : IDashboardInitializationController
 {
-    private List<IInitializationController> _myFeatures = new();
+    private List<IDashboardInitializationController> _myFeatures = new();
 
-    public InitializationController(Client client)
+    public DashboardInitializationController(Client client)
     {
         var allFeatures = client.Features.GetAll();
 
         foreach (var feature in allFeatures)
         {
-            if(feature is IInitializationController initializedFeature)
+            if(feature is IDashboardInitializationController initializedFeature)
             {
                 _myFeatures.Add(initializedFeature);
             }
