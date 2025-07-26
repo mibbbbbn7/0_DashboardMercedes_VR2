@@ -1,6 +1,6 @@
 namespace DashboardMercedes
 {
-    public class MyGameClient : Client
+    public class DashboardClient : Client
     {
         public override void InitFeatures()
         {
@@ -17,7 +17,7 @@ namespace DashboardMercedes
 
         public override void StartClient()
         {
-            StartUpFlow myFlow = new StartUpFlow();
+            CarStartUpFlow myFlow = new CarStartUpFlow();
             myFlow.BeginStartUp(this);
         }
     }

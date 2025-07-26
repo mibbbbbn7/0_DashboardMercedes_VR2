@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace DashboardMercedes
 {
-    public class StartUpFlow
+    public class CarStartUpFlow
     {
         public void BeginStartUp(Client client)
         {
