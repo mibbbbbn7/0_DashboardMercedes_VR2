@@ -6,7 +6,6 @@ using UnityEngine.Audio;
 public class SoundSpeaker : BaseMonoBehaviour<ISoundFeatureInternal>
 {
     [SerializeField] private AudioSource _sfxSource;
-    SoundFeature instance;
 
     protected Client _client;
     protected IBroadcaster _broadcaster;
@@ -15,33 +14,22 @@ public class SoundSpeaker : BaseMonoBehaviour<ISoundFeatureInternal>
     {
         base.ManagedAwake();
 
-        //_featureBroadcaster.Add<PlayOneShotEvent>(PlayOneShot);
-        _featureBroadcaster.Add<ButtonHoldedNowStartEvent>(PlayCarEngine);
-
         _client = Client.Instance;
         _broadcaster = _client.Services.Get<IBroadcaster>();
-        _broadcaster.Add<PlayOneShotEvent>(PlayOneShot);
+        _broadcaster.Add<PlayEngineSoundEvent>(PlayCarEngineSound);
     }
 
     protected override void ManagedOnDestroy()
     {
         base.ManagedOnDestroy();
 
-        _featureBroadcaster.Remove<PlayOneShotEvent>(PlayOneShot);
-        _featureBroadcaster.Remove<ButtonHoldedNowStartEvent>(PlayCarEngine);
+        _featureBroadcaster.Remove<PlayEngineSoundEvent>(PlayCarEngineSound);
     }
 
-    private void PlayOneShot(PlayOneShotEvent e)
+    private void PlayCarEngineSound(PlayEngineSoundEvent e) //questo lo faccio arrivare da TurnOnCarBehaviour
     {
-        Debug.Log("PlayOneShot");
-        AudioClip clip = Resources.Load<AudioClip>("Audio/SFX/ButtonHover");
-        //AudioClip clip = Resources.Load<AudioClip>("Audio/ButtonHover"); // Fixed: Replaced AudioResource.Load with Resources.Load
-        _sfxSource.PlayOneShot(clip, 1);
-    }
-
-    private void PlayCarEngine(ButtonHoldedNowStartEvent e)
-    {
-        AudioClip clip = Resources.Load<AudioClip>("Audio/ButtonHover"); // Fixed: Replaced AudioResource.Load with Resources.Load
+        Debug.Log("PlayCarEngineSound");
+        AudioClip clip = Resources.Load<AudioClip>("Audio/SFX/engineSound"); // Fixed: Replaced AudioResource.Load with Resources.Load
         _sfxSource.PlayOneShot(clip);
     }
 }

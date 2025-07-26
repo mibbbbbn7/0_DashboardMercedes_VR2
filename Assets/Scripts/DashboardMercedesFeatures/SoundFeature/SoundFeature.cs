@@ -4,12 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 
 
-public enum Channel
-{
-    SFX
-}
-
-public class SoundFeature : BaseFeature, ISoundFeature, ISoundFeatureInternal, ITurnOnCarInitializationController
+public class SoundFeature : BaseFeature, ISoundFeature, ISoundFeatureInternal, IDashboardInitializationController
 {
     public SoundFeature(Client client) : base(client)
     {

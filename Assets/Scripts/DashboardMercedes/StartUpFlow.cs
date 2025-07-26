@@ -12,8 +12,8 @@ namespace DashboardMercedes
 
         private async Task StartUpFlowTask(Client client)
         {
+            //IMainMenuFeature menuFeature = client.Features.Get<IMainMenuFeature>();
             ISoundFeature soundFeature = client.Features.Get<ISoundFeature>();
-            IMainMenuFeature menuFeature = client.Features.Get<IMainMenuFeature>();
             ITurnOnCarFeature turnOnCar = client.Features.Get<ITurnOnCarFeature>();
             IDashboardInitializationController dashboardInitController = client.Controllers.Get<IDashboardInitializationController>();
             ITurnOnCarInitializationController turnOnCarInitController = client.Controllers.Get<ITurnOnCarInitializationController>();

@@ -11,6 +11,7 @@ public class TurnOnCarBehaviour : BaseMonoBehaviour<ITurnOnCarFeatureInternal>
     [SerializeField] private Button _button;
     [SerializeField] private CanvasGroup _turnOnCarCanvasGroup;
     [SerializeField] private Slider _sliderProgress;  //-https://www.youtube.com/watch?v=AyuQXfgVk3U
+    [SerializeField] private Image _sliderImage;
 
     private Vector2 bloomScaleInit = Vector2.one;
     private Vector2 bloomScaleEnd = Vector2.one * 3.0f;
@@ -21,6 +22,7 @@ public class TurnOnCarBehaviour : BaseMonoBehaviour<ITurnOnCarFeatureInternal>
     Coroutine bloomCoroutine;
     Coroutine bloomHoldingCoroutine;
     Coroutine sliderProgressCoroutine;
+    Coroutine sliderBecomesGreenCoroutine;
 
     protected Client _client;
     protected IBroadcaster _broadcaster;
@@ -36,7 +38,7 @@ public class TurnOnCarBehaviour : BaseMonoBehaviour<ITurnOnCarFeatureInternal>
 
         bloomCoroutine = StartCoroutine(BloomAnimationStep(_buttonBloom.rectTransform, bloomScaleInit, bloomScaleEnd));
 
-        _featureBroadcaster.Add<ButtonHoldedNowStartEvent>(StartNow);
+        _featureBroadcaster.Add<ButtonHoldedNowStartEvent>(StartCarNow);
         _featureBroadcaster.Add<ButtonHoldingEvent>(FreezeBloomOnHold);
         _featureBroadcaster.Add<ButtonReleaseEvent>(ButtonReleased);
 
@@ -44,7 +46,7 @@ public class TurnOnCarBehaviour : BaseMonoBehaviour<ITurnOnCarFeatureInternal>
 
         _client = Client.Instance;
         _broadcaster = _client.Services.Get<IBroadcaster>();
-        _broadcaster.Add<ButtonHoldedNowStartEvent>(StartNow);
+        _broadcaster.Add<ButtonHoldedNowStartEvent>(StartCarNow);
     }
 
     protected override void ManagedUpdate()
@@ -56,7 +58,7 @@ public class TurnOnCarBehaviour : BaseMonoBehaviour<ITurnOnCarFeatureInternal>
     {
         base.ManagedOnDestroy();
 
-        _featureBroadcaster.Remove<ButtonHoldedNowStartEvent>(StartNow);
+        _featureBroadcaster.Remove<ButtonHoldedNowStartEvent>(StartCarNow);
         _featureBroadcaster.Remove<ButtonHoldingEvent>(FreezeBloomOnHold);
         _featureBroadcaster.Remove<ButtonReleaseEvent>(ButtonReleased);
     }
@@ -122,7 +124,7 @@ public class TurnOnCarBehaviour : BaseMonoBehaviour<ITurnOnCarFeatureInternal>
     private IEnumerator SliderProgressHolding(Slider sliderProgress)
     {
         float time = 0f;
-        const float requiredHoldTimeToStart = 1f;
+        const float requiredHoldTimeToStart = 0.9f;
 
         while (time < requiredHoldTimeToStart)
         {
@@ -146,14 +148,38 @@ public class TurnOnCarBehaviour : BaseMonoBehaviour<ITurnOnCarFeatureInternal>
         {
             StopCoroutine(bloomHoldingCoroutine);
         }
+        if(null != sliderBecomesGreenCoroutine)
+        {
+            StopCoroutine(sliderBecomesGreenCoroutine);
+        }
+        _sliderImage.color = Color.white;
 
         _sliderProgress.value = 0f;
         bloomCoroutine = StartCoroutine(BloomAnimationStep(_buttonBloom.rectTransform, _buttonBloom.rectTransform.localScale, bloomScaleInit));
     }
 
-    private void StartNow(ButtonHoldedNowStartEvent e)
+    private void StartCarNow(ButtonHoldedNowStartEvent e)
     {
-        Debug.Log("Broadcasteeeeeeeeed");
-        _broadcaster.Broadcast(new PlayOneShotEvent());
+        Debug.Log("Car started!");
+        _broadcaster.Broadcast(new PlayEngineSoundEvent());
+        StopAllCoroutines();
+        sliderBecomesGreenCoroutine = StartCoroutine(SliderBecomesGreen(_sliderImage));
+    }
+
+    private IEnumerator SliderBecomesGreen(Image sliderImage)
+    {
+        float time = 0f;
+        const float timeToLerp = 0.5f;
+
+        while (time < timeToLerp)
+        {
+            float t = time / timeToLerp;
+            t *= (2 - t);
+            time += Time.deltaTime;
+            sliderImage.color = Color.Lerp(Color.white, Color.green, t);
+            yield return null;
+        }
+
+        sliderImage.color = Color.green;
     }
 }

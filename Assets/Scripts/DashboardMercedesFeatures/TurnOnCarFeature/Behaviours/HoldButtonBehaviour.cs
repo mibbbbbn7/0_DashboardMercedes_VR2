@@ -16,7 +16,6 @@ public class HoldButtonBehaviour : BaseSelfInjectedBehaviour<ITurnOnCarFeatureIn
     private Vector2 _buttonPositionInit = new Vector2(-32f, 106f);
     private Vector2 _buttonPositionEnd = new Vector2(-28f, 106f);
 
-    float _toMoveX = 11f;
     private const float _buttonDurationStep = 0.40f;
     Coroutine MoveScaleDimButtonCoroutine;
 
@@ -57,7 +56,6 @@ public class HoldButtonBehaviour : BaseSelfInjectedBehaviour<ITurnOnCarFeatureIn
             {
                 _isHolding = false;
                 _holdTime = 0f;
-                Debug.Log("Car started!");
                 _featureBroadcaster.Broadcast(new ButtonHoldedNowStartEvent());
             }
         }
