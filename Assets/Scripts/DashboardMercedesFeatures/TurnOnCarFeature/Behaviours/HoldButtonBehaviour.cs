@@ -13,8 +13,8 @@ public class HoldButtonBehaviour : BaseSelfInjectedBehaviour<ITurnOnCarFeatureIn
 
     private Vector2 _buttonScaleInit = Vector2.one;
     private Vector2 _buttonScaleEnd = Vector2.one * 0.97f;
-    private Vector2 _buttonPositionInit = new Vector2(-32f, 106f);
-    private Vector2 _buttonPositionEnd = new Vector2(-28f, 106f);
+    private Vector2 _buttonPositionInit = new Vector2(132.9618f, 147.048f);
+    private Vector2 _buttonPositionEnd = new Vector2(131f, 145f);
 
     private const float _buttonDurationStep = 0.40f;
     Coroutine MoveScaleDimButtonCoroutine;
@@ -25,6 +25,7 @@ public class HoldButtonBehaviour : BaseSelfInjectedBehaviour<ITurnOnCarFeatureIn
 
     protected override void ManagedAwake()
     {
+
         base.ManagedAwake();
         
         _buttonComponent = GetComponent<Button>();

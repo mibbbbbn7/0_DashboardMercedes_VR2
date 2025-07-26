@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 
 
-public class SoundFeature : BaseFeature, ISoundFeature, ISoundFeatureInternal, IDashboardInitializationController
+public class SoundFeature : BaseFeature, ISoundFeature, ISoundFeatureInternal, IDashboardInitializationController, ITurnOnCarInitializationController
 {
     public SoundFeature(Client client) : base(client)
     {

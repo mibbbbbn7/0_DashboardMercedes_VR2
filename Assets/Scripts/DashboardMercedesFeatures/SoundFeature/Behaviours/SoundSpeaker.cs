@@ -19,6 +19,11 @@ public class SoundSpeaker : BaseMonoBehaviour<ISoundFeatureInternal>
         _broadcaster.Add<PlayEngineSoundEvent>(PlayCarEngineSound);
     }
 
+    protected override void ManagedUpdate()
+    {
+        base.ManagedUpdate();
+    }
+
     protected override void ManagedOnDestroy()
     {
         base.ManagedOnDestroy();
@@ -30,6 +35,7 @@ public class SoundSpeaker : BaseMonoBehaviour<ISoundFeatureInternal>
     {
         Debug.Log("PlayCarEngineSound");
         AudioClip clip = Resources.Load<AudioClip>("Audio/SFX/engineSound"); // Fixed: Replaced AudioResource.Load with Resources.Load
-        _sfxSource.PlayOneShot(clip);
+        _sfxSource.clip = clip;
+        _sfxSource.Play();
     }
 }

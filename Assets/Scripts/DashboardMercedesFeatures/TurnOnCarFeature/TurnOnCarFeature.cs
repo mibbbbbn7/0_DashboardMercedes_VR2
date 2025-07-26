@@ -24,7 +24,7 @@ public class TurnOnCarFeature : BaseFeature, ITurnOnCarFeature, ITurnOnCarFeatur
 
     public void OnFeatureLoadedAndInitialized()
     {
-        UnityEngine.Debug.Log("Initializing");
+
     }
 
     public async Task InstantiateTurnOnCarFeature()

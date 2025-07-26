@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Game.unity
+    path: Assets/Scenes/TurnOnCarScene.unity
     guid: 3f72368aaeed2ef468264d66269fb949
+  - enabled: 1
+    path: Assets/Scenes/DashboardScene.unity
+    guid: 24cb82a0facabba4c960a5e96877754a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
