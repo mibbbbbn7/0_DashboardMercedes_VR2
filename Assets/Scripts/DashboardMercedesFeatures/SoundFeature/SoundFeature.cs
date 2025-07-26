@@ -20,7 +20,7 @@ public class SoundFeature : BaseFeature, ISoundFeature, ISoundFeatureInternal, I
 
     public SoundFeature(Client client) : base(client)
     {
-        
+        _featureData = new();
     }
 
     public void InitializeFeature()
@@ -37,13 +37,19 @@ public class SoundFeature : BaseFeature, ISoundFeature, ISoundFeatureInternal, I
         _featureData.MyMixer.SetFloat("MusicVolume", _featureData.MyLocalSoundData.Music.Volume.Remap(new Vector2(0, 1), new Vector2(-80,0)));
         _featureData.MyMixer.SetFloat("SFXVolume", _featureData.MyLocalSoundData.SFX.Volume.Remap(new Vector2(0, 1), new Vector2(-80,0)));
 
-        var soundSpeaker = await _assetService.InstantiateAsset<SoundSpeakerGB>(SoundFeatureData.SOUND_SPEAKER_ASSET_NAME);
+        var soundSpeaker = await _assetService.InstantiateAsset<SoundSpeaker>(SoundFeatureData.SOUND_SPEAKER_ASSET_NAME);
         soundSpeaker.Initialize(this);
     }
 
     public void OnFeatureLoadedAndInitialized()
     {
         
+    }
+
+    public async Task InstantiateSoundFeature()
+    {
+        var soundFeature = await _assetService.InstantiateAsset<Soundmanager>(SoundFeatureData.SOUND_FEATURE_PREFAB_PATH);
+        soundFeature.Initialize(this);
     }
 
     private async Task LoadLocalData()

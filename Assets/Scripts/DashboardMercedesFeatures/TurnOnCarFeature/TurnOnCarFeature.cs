@@ -10,11 +10,6 @@ public class TurnOnCarFeature : BaseFeature, ITurnOnCarFeature, ITurnOnCarFeatur
     {
         _featureData = new();
     }
-    public async Task InstantiateTurnOnCar()
-    {
-        var turnOnCarInstance = await _assetService.InstantiateAsset<TurnOnCarBehaviour>(TurnOnCarData.TURN_ON_CAR_PREFAB_PATH);
-        turnOnCarInstance.Initialize(this);
-    }
 
     public void InitializeFeature()
     {
@@ -29,5 +24,11 @@ public class TurnOnCarFeature : BaseFeature, ITurnOnCarFeature, ITurnOnCarFeatur
     public void OnFeatureLoadedAndInitialized()
     {
         UnityEngine.Debug.Log("Initializing");
+    }
+
+    public async Task InstantiateTurnOnCar()
+    {
+        var turnOnCarInstance = await _assetService.InstantiateAsset<TurnOnCarBehaviour>(TurnOnCarData.TURN_ON_CAR_PREFAB_PATH);
+        turnOnCarInstance.Initialize(this);
     }
 }

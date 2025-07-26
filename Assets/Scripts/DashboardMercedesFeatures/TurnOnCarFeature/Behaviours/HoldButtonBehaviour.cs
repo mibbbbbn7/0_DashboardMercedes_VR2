@@ -12,9 +12,9 @@ public class HoldButtonBehaviour : BaseSelfInjectedBehaviour<ITurnOnCarFeatureIn
     private RectTransform _buttonRectTransformComponent;
 
     private Vector2 _buttonScaleInit = Vector2.one;
-    private Vector2 _buttonScaleEnd = Vector2.one * 0.98f;
-    private Vector2 _buttonPositionInit = new Vector2(-16f, 36);
-    private Vector2 _buttonPositionEnd = new Vector2(-22f, 36);
+    private Vector2 _buttonScaleEnd = Vector2.one * 0.97f;
+    private Vector2 _buttonPositionInit = new Vector2(-32f, 106f);
+    private Vector2 _buttonPositionEnd = new Vector2(-28f, 106f);
 
     float _toMoveX = 11f;
     private const float _buttonDurationStep = 0.40f;

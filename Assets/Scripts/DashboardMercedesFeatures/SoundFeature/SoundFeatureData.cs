@@ -9,6 +9,7 @@ public class SoundFeatureData
     public const string LOCAL_FILE_NAME = "local_sound_data.json";
     public const string SFX_GROUP_PATH = "Master/SFX";
     public const string MUSIC_GROUP_PATH = "Master/Music";
+    public const string SOUND_FEATURE_PREFAB_PATH = "Audio/UniversalSoundManager";
 
     public LocalSoundData MyLocalSoundData;
     public AudioMixer MyMixer;

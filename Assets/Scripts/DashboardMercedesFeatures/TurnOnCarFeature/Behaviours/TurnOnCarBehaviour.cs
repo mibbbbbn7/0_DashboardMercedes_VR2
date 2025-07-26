@@ -13,7 +13,7 @@ public class TurnOnCarBehaviour : BaseMonoBehaviour<ITurnOnCarFeatureInternal>
     [SerializeField] private Slider _sliderProgress;  //-https://www.youtube.com/watch?v=AyuQXfgVk3U
 
     private Vector2 bloomScaleInit = Vector2.one;
-    private Vector2 bloomScaleEnd = Vector2.one * 5.0f;
+    private Vector2 bloomScaleEnd = Vector2.one * 3.0f;
     private const float bloomDurationStep = 1.0f;
 
     private const float sliderValueInit = 0f;
