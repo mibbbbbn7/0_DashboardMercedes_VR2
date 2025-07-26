@@ -17,7 +17,6 @@ namespace DashboardMercedes
 
         public override void StartClient()
         {
-            _broadcaster.Broadcast(new LoadFeaturesEvent());
             StartUpFlow myFlow = new StartUpFlow();
             myFlow.BeginStartUp(this);
         }

@@ -16,9 +16,10 @@ public class TurnOnCarFeature : BaseFeature, ITurnOnCarFeature, ITurnOnCarFeatur
         UnityEngine.Debug.Log("Initializing");
     }
 
-    public Task LoadFeature()
+    public async Task LoadFeature()
     {
-        return Task.CompletedTask;
+        // Simulating an asynchronou
+        await Task.Delay(1);
     }
 
     public void OnFeatureLoadedAndInitialized()
@@ -26,7 +27,7 @@ public class TurnOnCarFeature : BaseFeature, ITurnOnCarFeature, ITurnOnCarFeatur
         UnityEngine.Debug.Log("Initializing");
     }
 
-    public async Task InstantiateTurnOnCar()
+    public async Task InstantiateTurnOnCarFeature()
     {
         var turnOnCarInstance = await _assetService.InstantiateAsset<TurnOnCarBehaviour>(TurnOnCarData.TURN_ON_CAR_PREFAB_PATH);
         turnOnCarInstance.Initialize(this);

@@ -3,5 +3,5 @@ using DashboardMercedes;
 
 public interface ITurnOnCarFeature : IFeature
 {
-    public Task InstantiateTurnOnCar();
+    public Task InstantiateTurnOnCarFeature();
 }

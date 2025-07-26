@@ -22,6 +22,9 @@ public class TurnOnCarBehaviour : BaseMonoBehaviour<ITurnOnCarFeatureInternal>
     Coroutine bloomHoldingCoroutine;
     Coroutine sliderProgressCoroutine;
 
+    protected Client _client;
+    protected IBroadcaster _broadcaster;
+
     protected override void ManagedAwake()
     {
         base.ManagedAwake();
@@ -38,6 +41,10 @@ public class TurnOnCarBehaviour : BaseMonoBehaviour<ITurnOnCarFeatureInternal>
         _featureBroadcaster.Add<ButtonReleaseEvent>(ButtonReleased);
 
         _sliderProgress.value = sliderValueInit;
+
+        _client = Client.Instance;
+        _broadcaster = _client.Services.Get<IBroadcaster>();
+        _broadcaster.Add<ButtonHoldedNowStartEvent>(StartNow);
     }
 
     protected override void ManagedUpdate()
@@ -147,5 +154,6 @@ public class TurnOnCarBehaviour : BaseMonoBehaviour<ITurnOnCarFeatureInternal>
     private void StartNow(ButtonHoldedNowStartEvent e)
     {
         Debug.Log("Broadcasteeeeeeeeed");
+        _broadcaster.Broadcast(new PlayOneShotEvent());
     }
 }

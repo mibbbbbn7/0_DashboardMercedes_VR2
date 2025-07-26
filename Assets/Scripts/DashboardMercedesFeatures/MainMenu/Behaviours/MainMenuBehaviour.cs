@@ -43,6 +43,7 @@ public class MainMenuBehaviour : BaseMonoBehaviour<IMainMenuFeatureInternal>
     private void DoOnClick(Pages targetPage)
     {
         StartCoroutine(MyFaderoutine(targetPage));
+        
     }
 
     private IEnumerator MyFaderoutine(Pages targetPage)

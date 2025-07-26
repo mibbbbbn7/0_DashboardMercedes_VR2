@@ -27,7 +27,7 @@ public class HoldButtonBehaviour : BaseSelfInjectedBehaviour<ITurnOnCarFeatureIn
     protected override void ManagedAwake()
     {
         base.ManagedAwake();
-
+        
         _buttonComponent = GetComponent<Button>();
         if (null == _buttonComponent)
         {
@@ -45,6 +45,7 @@ public class HoldButtonBehaviour : BaseSelfInjectedBehaviour<ITurnOnCarFeatureIn
         {
             Debug.Log("RectTransform not attached");
         }
+
     }
 
     private void Update()

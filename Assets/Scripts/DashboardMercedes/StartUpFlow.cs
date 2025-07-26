@@ -19,16 +19,16 @@ namespace DashboardMercedes
             ITurnOnCarInitializationController turnOnCarInitController = client.Controllers.Get<ITurnOnCarInitializationController>();
 
 
-            //dashboardInitController.InitializeFeature();
-            //await dashboardInitController.LoadFeature();
-            //dashboardInitController.OnFeatureLoadedAndInitialized();
+            dashboardInitController.InitializeFeature();
+            await dashboardInitController.LoadFeature();
+            dashboardInitController.OnFeatureLoadedAndInitialized();
 
             turnOnCarInitController.InitializeFeature();
             await turnOnCarInitController.LoadFeature();
             turnOnCarInitController.OnFeatureLoadedAndInitialized();
 
             await soundFeature.InstantiateSoundFeature();
-            await turnOnCar.InstantiateTurnOnCar();
+            await turnOnCar.InstantiateTurnOnCarFeature();
             //await menuFeature.InstantiateMainMenu();
 
         }
