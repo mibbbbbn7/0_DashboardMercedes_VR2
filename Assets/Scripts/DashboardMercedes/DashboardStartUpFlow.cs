@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace DashboardMercedes
 {
@@ -31,13 +32,16 @@ namespace DashboardMercedes
 
             ISoundFeature soundFeature = client.Features.Get<ISoundFeature>();
             IMainMenuFeature menuFeature = client.Features.Get<IMainMenuFeature>();
-            IDashboardInitializationController initController = client.Controllers.Get<IDashboardInitializationController>();
+            ILoadingStartFeature loadingStartFeature = client.Features.Get<ILoadingStartFeature>();
+            IDashboardInitializationController DashboardinitController = client.Controllers.Get<IDashboardInitializationController>();
 
-            initController.InitializeFeature();
-            await initController.LoadFeature();
-            initController.OnFeatureLoadedAndInitialized();
 
-            await menuFeature.InstantiateMainMenu();
+            DashboardinitController.InitializeFeature();
+            await DashboardinitController.LoadFeature();
+            DashboardinitController.OnFeatureLoadedAndInitialized();
+
+            //await menuFeature.InstantiateMainMenu();
+            await loadingStartFeature.InstantiateLoadingStart();
         }
     }
 }
