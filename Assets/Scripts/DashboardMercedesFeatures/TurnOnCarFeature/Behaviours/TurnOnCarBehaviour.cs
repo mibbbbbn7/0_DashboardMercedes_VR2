@@ -48,7 +48,7 @@ public class TurnOnCarBehaviour : BaseMonoBehaviour<ITurnOnCarFeatureInternal>
 
         _client = Client.Instance;
         _broadcaster = _client.Services.Get<IBroadcaster>();
-        _broadcaster.Add<ButtonHoldedNowStartEvent>(StartCarNow);
+        _broadcaster.Add<ButtonHoldedNowStartEvent>(StartCarNow);        
     }
     
     protected override void ManagedUpdate()

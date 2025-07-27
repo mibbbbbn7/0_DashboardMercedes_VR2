@@ -1,0 +1,9 @@
+﻿
+class LoadingStartBeginEvent
+{
+    public LoadingStartBeginEvent()
+    {
+
+    }
+}
+

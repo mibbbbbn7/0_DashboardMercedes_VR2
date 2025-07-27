@@ -45,7 +45,9 @@ public class LoadingStartBehaviour : BaseMonoBehaviour<ILoadingStartFeatureInter
     [SerializeField] private RawImage _amgSegment_4;
     [SerializeField] private RawImage _amgSegment_5;
     private RawImage[] _amgSegmentsGroup;
-    
+
+    protected Client _client;
+    protected IBroadcaster _broadcaster;
 
     protected override void ManagedAwake()
     {
@@ -58,16 +60,25 @@ public class LoadingStartBehaviour : BaseMonoBehaviour<ILoadingStartFeatureInter
             _amgSegment_4,
             _amgSegment_5
         };
+        
 
         _eyeDXTextureON = Resources.Load<Texture2D>(LoadingStartData.EYE_DX_TEXTURE_ON_PATH);
         _eyeSXTextureON = Resources.Load<Texture2D>(LoadingStartData.EYE_SX_TEXTURE_ON_PATH);
 
         _bumper.color = new Color(1f, 1f, 1f, 0f);
 
+        _client = Client.Instance;
+        _broadcaster = _client.Services.Get<IBroadcaster>();
+
         StartCoroutine(AnimationStepSxEyeOff(_eyeSX.rectTransform, _eyeSteps[_eyeStep], _eyeSteps[1 + _eyeStep]));
         StartCoroutine(AnimationAlphaAmgSegment(_amgSegmentsGroup, _amgSegment_1.color, _amgSegment_1.color.a));
     }
-    
+
+    protected override void ManagedStart()
+    {
+        base.ManagedStart();
+    }
+
     private IEnumerator AnimationStepSxEyeOff(RectTransform eyeTransform, Vector2 startPosition, Vector2 targetPosition)
     {
         float time = 0f;
@@ -118,6 +129,7 @@ public class LoadingStartBehaviour : BaseMonoBehaviour<ILoadingStartFeatureInter
         _eyeSX.texture = _eyeSXTextureON;
         _eyeDX.texture = _eyeDXTextureON;
         StartCoroutine(EyesOnBecomeOpaque());
+        _broadcaster.Broadcast(new LoadingStartBeginEvent());
     }
 
     private IEnumerator EyesOnBecomeOpaque()

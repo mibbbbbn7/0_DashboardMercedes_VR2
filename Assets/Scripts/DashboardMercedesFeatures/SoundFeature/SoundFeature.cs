@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 
 
-public class SoundFeature : BaseFeature, ISoundFeature, ISoundFeatureInternal, IDashboardInitializationController, ITurnOnCarInitializationController
+public class SoundFeature : BaseFeature, ISoundFeature, ISoundFeatureInternal, ITurnOnCarInitializationController
 {
     public SoundFeature(Client client) : base(client)
     {
@@ -18,7 +18,7 @@ public class SoundFeature : BaseFeature, ISoundFeature, ISoundFeatureInternal, I
 
     public async Task LoadFeature()
     {
-        await Task.Delay(1);
+        await Task.Delay(0);
     }
 
     public void OnFeatureLoadedAndInitialized()

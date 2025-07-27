@@ -16,6 +16,9 @@ namespace DashboardMercedes
             ITurnOnCarFeature turnOnCar = client.Features.Get<ITurnOnCarFeature>();
             ITurnOnCarInitializationController turnOnCarInitController = client.Controllers.Get<ITurnOnCarInitializationController>();
 
+
+            // controller lasciati per completezza dell'architettura vista in classe anche
+            // se per ora non ne traggo molto utilizzo :|
             turnOnCarInitController.InitializeFeature();
             await turnOnCarInitController.LoadFeature();
             turnOnCarInitController.OnFeatureLoadedAndInitialized();

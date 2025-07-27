@@ -18,7 +18,7 @@ public class LoadingStartFeature : BaseFeature, ILoadingStartFeature, ILoadingSt
     public async Task LoadFeature()
     {
         // Simulating an asynchronou
-        await Task.Delay(1);
+        await Task.Delay(0);
     }
 
     public void OnFeatureLoadedAndInitialized()

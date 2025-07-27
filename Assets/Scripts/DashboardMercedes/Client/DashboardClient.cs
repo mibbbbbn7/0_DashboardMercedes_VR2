@@ -4,9 +4,9 @@ namespace DashboardMercedes
     {
         public override void InitFeatures()
         {
+            Features.Add<IDashboardFeature>(new DashboardFeature(this));
             Features.Add<ISoundFeature>(new SoundFeature(this));
             Features.Add<IMainMenuFeature>(new MainMenuFeature(this));
-            Features.Add<ITurnOnCarFeature>(new TurnOnCarFeature(this));
             Features.Add<ILoadingStartFeature>(new LoadingStartFeature(this));
         }
 

@@ -30,17 +30,21 @@ namespace DashboardMercedes
             // await soundFeature.InstantiateSoundFeature();
             // await turnOnCar.InstantiateTurnOnCarFeature();
 
+            IDashboardFeature dashboardStateManager = client.Features.Get<IDashboardFeature>();
+
+
             ISoundFeature soundFeature = client.Features.Get<ISoundFeature>();
             IMainMenuFeature menuFeature = client.Features.Get<IMainMenuFeature>();
             ILoadingStartFeature loadingStartFeature = client.Features.Get<ILoadingStartFeature>();
             IDashboardInitializationController DashboardinitController = client.Controllers.Get<IDashboardInitializationController>();
-
 
             DashboardinitController.InitializeFeature();
             await DashboardinitController.LoadFeature();
             DashboardinitController.OnFeatureLoadedAndInitialized();
 
             //await menuFeature.InstantiateMainMenu();
+            await dashboardStateManager.InstantiateDashboardFeature();
+            await soundFeature.InstantiateSoundFeature();
             await loadingStartFeature.InstantiateLoadingStart();
         }
     }
