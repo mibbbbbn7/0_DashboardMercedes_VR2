@@ -6,6 +6,7 @@ namespace DashboardMercedes {
         protected Dictionary<string, TState> _mystatesDictionary = new();
 
         protected TState _currentState;
+        protected TState _previousState;
 
         public void AddState(string stateName, TState state)
         {
@@ -24,19 +25,20 @@ namespace DashboardMercedes {
         {
             if (_currentState != null)
             {
-                _currentState.ExitState();
+                _previousState = _currentState;
+                _currentState.StateOnExit();
             }
 
             _currentState = _mystatesDictionary[newState];
 
-            _currentState.EnterState();
+            _currentState.StateOnEnter();
         }
 
         public void UpdateState()
         {
             if(_currentState != null)
             {
-                _currentState.UpdateState();
+                _currentState.StateOnUpdate();
             }
         }
     }

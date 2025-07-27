@@ -30,4 +30,9 @@ public class DashboardFeature : BaseFeature, IDashboardFeature, IDashboardFeatur
         var DashboardInstance = await _assetService.InstantiateAsset<DashboardBehaviour>(DashboardData.DASHBOARD_PREFAB_PATH);
         DashboardInstance.Initialize(this);
     }
+
+    public Client GetClient()
+    {
+        return _client;
+    }
 }

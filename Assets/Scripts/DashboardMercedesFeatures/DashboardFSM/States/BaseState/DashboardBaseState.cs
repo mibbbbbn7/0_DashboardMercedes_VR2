@@ -9,10 +9,10 @@
             _context = context;
         }
 
-        public abstract void EnterState();
+        public abstract void StateOnEnter();
 
-        public abstract void ExitState();
+        public abstract void StateOnExit();
 
-        public abstract void UpdateState();
+        public abstract void StateOnUpdate();
     }
 }

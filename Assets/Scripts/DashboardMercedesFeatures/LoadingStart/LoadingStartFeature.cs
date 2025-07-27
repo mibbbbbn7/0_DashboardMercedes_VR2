@@ -23,7 +23,7 @@ public class LoadingStartFeature : BaseFeature, ILoadingStartFeature, ILoadingSt
 
     public void OnFeatureLoadedAndInitialized()
     {
-
+        
     }
 
     public async Task InstantiateLoadingStart()

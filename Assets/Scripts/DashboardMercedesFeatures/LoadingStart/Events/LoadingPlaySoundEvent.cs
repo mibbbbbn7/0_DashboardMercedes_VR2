@@ -1,0 +1,9 @@
+﻿
+class LoadingPlaySoundEvent
+{
+    public LoadingPlaySoundEvent()
+    {
+
+    }
+}
+

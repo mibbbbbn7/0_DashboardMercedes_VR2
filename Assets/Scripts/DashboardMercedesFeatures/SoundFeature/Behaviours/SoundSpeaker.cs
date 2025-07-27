@@ -17,7 +17,7 @@ public class SoundSpeaker : BaseMonoBehaviour<ISoundFeatureInternal>
         _client = Client.Instance;
         _broadcaster = _client.Services.Get<IBroadcaster>();
         _broadcaster.Add<PlayEngineSoundEvent>(PlayCarEngineSound);
-        _broadcaster.Add<LoadingStartBeginEvent>(PlayLoadingStartBeginSound);
+        _broadcaster.Add<LoadingPlaySoundEvent>(PlayLoadingStartBeginSound);
     }
 
     protected override void ManagedUpdate()
@@ -40,7 +40,7 @@ public class SoundSpeaker : BaseMonoBehaviour<ISoundFeatureInternal>
         _sfxSource.Play();
     }
 
-    private void PlayLoadingStartBeginSound(LoadingStartBeginEvent e)
+    private void PlayLoadingStartBeginSound(LoadingPlaySoundEvent e)
     {
         Debug.Log("PlayLoadingStartBeginSound");
         AudioClip clip = Resources.Load<AudioClip>("Audio/SFX/turnOnSound");

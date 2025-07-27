@@ -2,6 +2,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LoadingStartBehaviour : BaseMonoBehaviour<ILoadingStartFeatureInternal>
@@ -49,6 +50,9 @@ public class LoadingStartBehaviour : BaseMonoBehaviour<ILoadingStartFeatureInter
     protected Client _client;
     protected IBroadcaster _broadcaster;
 
+    private bool LoadingCanTerminate = false;
+    private bool ExceededFancyWaitingTime = false;
+
     protected override void ManagedAwake()
     {
         base.ManagedAwake();
@@ -69,6 +73,7 @@ public class LoadingStartBehaviour : BaseMonoBehaviour<ILoadingStartFeatureInter
 
         _client = Client.Instance;
         _broadcaster = _client.Services.Get<IBroadcaster>();
+        _broadcaster.Add<LoadingTerminatedEvent>(TerminateLoading);
 
         StartCoroutine(AnimationStepSxEyeOff(_eyeSX.rectTransform, _eyeSteps[_eyeStep], _eyeSteps[1 + _eyeStep]));
         StartCoroutine(AnimationAlphaAmgSegment(_amgSegmentsGroup, _amgSegment_1.color, _amgSegment_1.color.a));
@@ -77,6 +82,16 @@ public class LoadingStartBehaviour : BaseMonoBehaviour<ILoadingStartFeatureInter
     protected override void ManagedStart()
     {
         base.ManagedStart();
+    }
+
+    protected override void ManagedUpdate()
+    {
+        base.ManagedUpdate();
+
+        if (ExceededFancyWaitingTime)
+        {
+            StartCoroutine(DestroyLoadingSmooth());
+        }
     }
 
     private IEnumerator AnimationStepSxEyeOff(RectTransform eyeTransform, Vector2 startPosition, Vector2 targetPosition)
@@ -129,7 +144,7 @@ public class LoadingStartBehaviour : BaseMonoBehaviour<ILoadingStartFeatureInter
         _eyeSX.texture = _eyeSXTextureON;
         _eyeDX.texture = _eyeDXTextureON;
         StartCoroutine(EyesOnBecomeOpaque());
-        _broadcaster.Broadcast(new LoadingStartBeginEvent());
+        _broadcaster.Broadcast(new LoadingPlaySoundEvent());
     }
 
     private IEnumerator EyesOnBecomeOpaque()
@@ -152,6 +167,14 @@ public class LoadingStartBehaviour : BaseMonoBehaviour<ILoadingStartFeatureInter
         _bumper.color = new Color(1f, 1f, 1f, 0.8f);
         _eyeDX.color = new Color(_eyeDX.color.r, _eyeDX.color.g, _eyeDX.color.b, 0.8f);
         _eyeSX.color = new Color(_eyeSX.color.r, _eyeSX.color.g, _eyeSX.color.b, 0.8f);
+        yield return new WaitForSeconds(3);
+        if (LoadingCanTerminate)
+        {
+            StartCoroutine(DestroyLoadingSmooth());// this is only to assure the animation is completly seen
+        }else
+        {
+            ExceededFancyWaitingTime = true;//if assets arent redy at the end of the animation the termination of the loading will be handled via Update()
+        }
     }
 
     private void MirrorSxEyePositionOnDx()
@@ -186,13 +209,25 @@ public class LoadingStartBehaviour : BaseMonoBehaviour<ILoadingStartFeatureInter
         StartCoroutine(AnimationAlphaAmgSegment(segments, baseColor, segments[_amgStep].color.a));
     }
 
-    protected override void ManagedUpdate()
+    private void TerminateLoading(LoadingTerminatedEvent e)
     {
-        base.ManagedUpdate();
+        LoadingCanTerminate = true;
+    }
 
+    private IEnumerator DestroyLoadingSmooth()
+    {
+        float time = 0f;
+        const float timeToLerp = 0.3f;
 
-        //CREDO SIA APPRIOPRIATO METTERLO QUA:
-        // aspettare che il menu broadcasti la sua istanziazione cosi da distruggere il
-        // il loading screen
+        while (time < timeToLerp)
+        {
+            float t = time / timeToLerp;
+            time += Time.deltaTime;
+            _loadingStartCanvas.alpha = Mathf.Lerp(1f, 0f, t);
+            yield return null;
+        }
+
+        _loadingStartCanvas.alpha = 0f;
+        Destroy(gameObject);
     }
 }

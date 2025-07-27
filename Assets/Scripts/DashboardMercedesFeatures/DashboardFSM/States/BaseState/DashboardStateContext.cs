@@ -3,6 +3,6 @@
 public class DashboardStateContext
 {
     public Client Client;
-    public DashboardFSM StateMachine;
+    public DashboardFSM DashboardStateMachine;
     public DashboardBehaviour MyDashboard;
 }
