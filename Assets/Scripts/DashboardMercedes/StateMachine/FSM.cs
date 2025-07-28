@@ -41,5 +41,10 @@ namespace DashboardMercedes {
                 _currentState.StateOnUpdate();
             }
         }
+
+        public TState GetCurrentState()
+        {
+            return _currentState;
+        }
     }
 }
