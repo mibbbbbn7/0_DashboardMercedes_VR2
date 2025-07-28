@@ -17,6 +17,7 @@ public class SoundSpeaker : BaseMonoBehaviour<ISoundFeatureInternal>
         _client = Client.Instance;
         _broadcaster = _client.Services.Get<IBroadcaster>();
         _broadcaster.Add<PlayEngineSoundEvent>(PlayCarEngineSound);
+        _broadcaster.Add<PlayClickSoundEvent>(PlayClickSound);
         _broadcaster.Add<LoadingPlaySoundEvent>(PlayLoadingStartBeginSound);
     }
 
@@ -35,7 +36,7 @@ public class SoundSpeaker : BaseMonoBehaviour<ISoundFeatureInternal>
     private void PlayCarEngineSound(PlayEngineSoundEvent e) //questo lo faccio arrivare da TurnOnCarBehaviour
     {
         Debug.Log("PlayCarEngineSound");
-        AudioClip clip = Resources.Load<AudioClip>("Audio/SFX/engineSound");
+        AudioClip clip = Resources.Load<AudioClip>(SoundFeatureData.ENGINE_SFX);
         _sfxSource.clip = clip;
         _sfxSource.Play();
     }
@@ -43,7 +44,14 @@ public class SoundSpeaker : BaseMonoBehaviour<ISoundFeatureInternal>
     private void PlayLoadingStartBeginSound(LoadingPlaySoundEvent e)
     {
         Debug.Log("PlayLoadingStartBeginSound");
-        AudioClip clip = Resources.Load<AudioClip>("Audio/SFX/turnOnSound");
+        AudioClip clip = Resources.Load<AudioClip>(SoundFeatureData.TURN_ON_SFX);
+        _sfxSource.clip = clip;
+        _sfxSource.PlayOneShot(clip, 2f);
+    }
+
+    private void PlayClickSound(PlayClickSoundEvent e)
+    {
+        AudioClip clip = Resources.Load<AudioClip>(SoundFeatureData.CLICK_SFX);
         _sfxSource.clip = clip;
         _sfxSource.PlayOneShot(clip, 2f);
     }

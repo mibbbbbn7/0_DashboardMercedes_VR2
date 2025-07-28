@@ -11,7 +11,12 @@ public class DashboardBehaviour : BaseMonoBehaviour<IDashboardFeatureInternal>
     [SerializeField] public GameObject _dotsContainer;
     [SerializeField] public GameObject _dotPrefab;
     [SerializeField] public RectTransform _swipableArea;
-    
+    [SerializeField] public RectTransform _pagesContainer;
+    [SerializeField] public Button _climaButton;
+
+    [SerializeField] public GameObject mainMenuObj;
+    [SerializeField] public GameObject climaAppObj;
+
     public int _currentPageIndex = 0;
 
     protected override void ManagedAwake()
@@ -23,7 +28,9 @@ public class DashboardBehaviour : BaseMonoBehaviour<IDashboardFeatureInternal>
         {
             Client = _feature.GetClient(),
             MyDashboard = this,
-            DashboardStateMachine = _dashboardStateMachine
+            DashboardStateMachine = _dashboardStateMachine,
+            mainMenuObj = mainMenuObj,
+            climaAppObj = climaAppObj
         };
 
         //InitializeDots();
@@ -48,7 +55,7 @@ public class DashboardBehaviour : BaseMonoBehaviour<IDashboardFeatureInternal>
         base.ManagedStart();
 
         InitializeDots();
-        _dashboardStateMachine.GoTo(DashboardData.MENU_STATE);
+        _dashboardStateMachine.GoTo(DashboardData.MAIN_MENU_STATE);
     }
 
     protected override void ManagedOnDestroy()

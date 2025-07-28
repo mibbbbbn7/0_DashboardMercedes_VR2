@@ -44,7 +44,7 @@ namespace DashboardMercedes
             //await menuFeature.InstantiateMainMenu();
 
             await soundFeature.InstantiateSoundFeature();
-            await loadingStartFeature.InstantiateLoadingStart();
+            //await loadingStartFeature.InstantiateLoadingStart();
             await dashboardFeature.InstantiateDashboardFeature();
 
             clientBroadcaster.Broadcast(new LoadingTerminatedEvent());
