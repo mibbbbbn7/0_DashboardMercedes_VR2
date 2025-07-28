@@ -25,7 +25,7 @@ namespace DashboardMercedes
 
         public override void StateOnEnter()
         {
-            ShowContent();
+            ShowContent();//DA RIVEDERE NOMI E ANIMAZIONE
         }
 
         public override void StateOnExit()
