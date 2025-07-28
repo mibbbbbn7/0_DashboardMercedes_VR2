@@ -18,6 +18,7 @@ namespace DashboardMercedes
         private Vector2 _touchStartingPos;
         private Button _climaButton;
         private GameObject _climaAppObject;
+        private GameObject mainMenuObj;
 
         // 4 Anim
         private float _pageWidth;
@@ -38,6 +39,7 @@ namespace DashboardMercedes
             _pagesContainer = _context.MyDashboard._pagesContainer;
             _climaButton = _context.MyDashboard._climaButton;
 
+            mainMenuObj = _context.mainMenuObj;
             _climaAppObject = _context.climaAppObj;
 
             _transitionCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
@@ -54,20 +56,24 @@ namespace DashboardMercedes
 
         public void GoToClimaState()
         {
-            _context.DashboardStateMachine.GoTo(DashboardData.APP_STATE);
             _climaAppObject.SetActive(true);
+
             clientBroadcaster.Broadcast(new PlayClickSoundEvent());
+            _context.DashboardStateMachine.GoTo(DashboardData.APP_STATE);
         }
 
         public override void StateOnEnter()
         {
-
-            _currentPageIndex = _context._currentPageIndex;
+            _currentPageIndex = _context.MyDashboard.getIndex();
+            AnimateToCurrentPage();
+            AnimatePageTransition();
+            mainMenuObj.SetActive(true);
         }
 
         public override void StateOnExit()
         {
-
+            _context.MyDashboard.setIndex(_currentPageIndex);
+            mainMenuObj.SetActive(false);
         }
 
         public override void StateOnUpdate()

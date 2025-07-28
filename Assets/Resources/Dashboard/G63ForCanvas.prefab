@@ -3065,6 +3065,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4105681790309646559}
+  - component: {fileID: 5393402776161980346}
   m_Layer: 0
   m_Name: G63Rotate
   m_TagString: Untagged
@@ -3088,6 +3089,20 @@ Transform:
   - {fileID: 8815313975963799562}
   m_Father: {fileID: 649666747467410338}
   m_LocalEulerAnglesHint: {x: 0, y: 1306.8, z: 0}
+--- !u!114 &5393402776161980346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6052078884484193093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f5ad527687495944ad36f636eb354cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObject: {fileID: 4105681790309646559}
+  rotationSpeed: 30
 --- !u!1 &6393228214392740106
 GameObject:
   m_ObjectHideFlags: 0

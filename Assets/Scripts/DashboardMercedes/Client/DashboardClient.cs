@@ -6,7 +6,6 @@ namespace DashboardMercedes
         {
             Features.Add<IDashboardFeature>(new DashboardFeature(this));
             Features.Add<ISoundFeature>(new SoundFeature(this));
-            Features.Add<IMainMenuFeature>(new MainMenuFeature(this));
             Features.Add<ILoadingStartFeature>(new LoadingStartFeature(this));
         }
 

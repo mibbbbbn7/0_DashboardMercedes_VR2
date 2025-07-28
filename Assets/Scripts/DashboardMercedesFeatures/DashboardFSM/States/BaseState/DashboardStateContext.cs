@@ -7,6 +7,7 @@ public class DashboardStateContext
     public DashboardFSM DashboardStateMachine;
     public DashboardBehaviour MyDashboard;
     public int _currentPageIndex;
+    public int _previousPageIndex;
     public GameObject mainMenuObj;
     public GameObject climaAppObj;
 }

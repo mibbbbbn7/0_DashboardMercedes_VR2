@@ -1,5 +1,6 @@
 ﻿using DashboardMercedes;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +18,31 @@ public class DashboardBehaviour : BaseMonoBehaviour<IDashboardFeatureInternal>
     [SerializeField] public GameObject mainMenuObj;
     [SerializeField] public GameObject climaAppObj;
 
+
+    //clima
+    [SerializeField] public RawImage ClimaColorBack;
+    [SerializeField] public Button Hotter;
+    [SerializeField] public Button Colder;
+    [SerializeField] public Button Stronger;
+    [SerializeField] public Button Weaker;
+
+    [SerializeField] public Button Back;
+    [SerializeField] public Button Home;
+
+    [SerializeField] public TextMeshProUGUI Text;
+
     public int _currentPageIndex = 0;
+    public int getIndex()
+    {
+        Debug.Log(_currentPageIndex);
+        return _currentPageIndex;
+
+    }
+    public void setIndex(int indexNew)
+    {
+        _currentPageIndex = indexNew;
+        Debug.Log(_currentPageIndex);
+    }
 
     protected override void ManagedAwake()
     {
@@ -55,7 +80,7 @@ public class DashboardBehaviour : BaseMonoBehaviour<IDashboardFeatureInternal>
         base.ManagedStart();
 
         InitializeDots();
-        _dashboardStateMachine.GoTo(DashboardData.MAIN_MENU_STATE);
+        _dashboardStateMachine.GoTo(DashboardData.MENU_STATE);
     }
 
     protected override void ManagedOnDestroy()
