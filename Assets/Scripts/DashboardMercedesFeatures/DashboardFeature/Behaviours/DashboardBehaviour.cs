@@ -32,15 +32,28 @@ public class DashboardBehaviour : BaseMonoBehaviour<IDashboardFeatureInternal>
     [SerializeField] public TextMeshProUGUI Text;
 
     public int _currentPageIndex = 0;
-    public int getIndex()
+    public int getCurrentIndex()
     {
         Debug.Log(_currentPageIndex);
         return _currentPageIndex;
 
     }
-    public void setIndex(int indexNew)
+    public void setCurrentIndex(int indexNew)
     {
         _currentPageIndex = indexNew;
+        Debug.Log(_currentPageIndex);
+    }
+
+    public int _previousPageIndex = 1;
+    public int getPreviousIndex()
+    {
+        Debug.Log(_previousPageIndex);
+        return _previousPageIndex;
+
+    }
+    public void setPreviousIndex(int indexNew)
+    {
+        _previousPageIndex = indexNew;
         Debug.Log(_currentPageIndex);
     }
 

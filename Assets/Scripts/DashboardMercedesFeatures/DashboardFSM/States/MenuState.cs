@@ -64,7 +64,8 @@ namespace DashboardMercedes
 
         public override void StateOnEnter()
         {
-            _currentPageIndex = _context.MyDashboard.getIndex();
+            _currentPageIndex = _context.MyDashboard.getCurrentIndex();
+            _previousPageIndex = _context.MyDashboard.getPreviousIndex();
             AnimateToCurrentPage();
             AnimatePageTransition();
             mainMenuObj.SetActive(true);
@@ -72,7 +73,8 @@ namespace DashboardMercedes
 
         public override void StateOnExit()
         {
-            _context.MyDashboard.setIndex(_currentPageIndex);
+            _context.MyDashboard.setCurrentIndex(_currentPageIndex);
+            _context.MyDashboard.setPreviousIndex(_previousPageIndex);
             mainMenuObj.SetActive(false);
         }
 

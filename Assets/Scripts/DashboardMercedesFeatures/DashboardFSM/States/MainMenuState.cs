@@ -8,7 +8,8 @@
 
         public override void StateOnEnter()
         {
-            _context.MyDashboard.setIndex(0);
+            _context.MyDashboard.setCurrentIndex(0);
+            _context.MyDashboard.setPreviousIndex(1);
             _context.DashboardStateMachine.GoTo(DashboardData.MENU_STATE);
         }
 
